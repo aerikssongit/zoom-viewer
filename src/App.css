@@ -1,0 +1,35 @@
+.viewer-image {
+  max-width: 100%;
+}
+.hidden-input {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  white-space: nowrap;
+  width: 1px;
+}
+.viewer__container {
+  position: absolute;
+  top: 0;
+}
+.viewer__container--actions {
+  z-index: 2;
+/*
+  top: 10px;
+  left: 10px;
+*/
+  touch-action: none;
+}
+.viewer__container--image {
+  z-index: 1;
+  width: 100%;
+}
+.viewer__actions-menu {
+  background-color: rgba(240, 244, 248, .8);
+  padding: 20px;
+  border-radius: 10px;
+}
