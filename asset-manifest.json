@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/zoom-viewer/static/css/main.d0b66e0f.css",
+    "main.js": "/zoom-viewer/static/js/main.afdc2acf.js",
+    "static/js/787.cf571360.chunk.js": "/zoom-viewer/static/js/787.cf571360.chunk.js",
+    "index.html": "/zoom-viewer/index.html",
+    "main.d0b66e0f.css.map": "/zoom-viewer/static/css/main.d0b66e0f.css.map",
+    "main.afdc2acf.js.map": "/zoom-viewer/static/js/main.afdc2acf.js.map",
+    "787.cf571360.chunk.js.map": "/zoom-viewer/static/js/787.cf571360.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d0b66e0f.css",
+    "static/js/main.afdc2acf.js"
+  ]
+}
