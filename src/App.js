@@ -19,10 +19,19 @@ function App() {
   function handleZoomLock(e, c) {
     allowZoom = c;
   }
+  function setActionsOffset() {
+    const viewerContainerActions = document.getElementsByClassName("viewer__container--actions")[0];
+    let scale = (1 / window.visualViewport.scale);
+    let scaleOffset = scale*100;
+    let offsetLeft = window.visualViewport.offsetLeft;
+    let offsetTop = window.visualViewport.offsetTop;
+    viewerContainerActions.style.left = offsetLeft-100+scaleOffset + "px";
+    viewerContainerActions.style.top =  offsetTop-(7.5*window.visualViewport.scale) + "px";
+    viewerContainerActions.style.transform = "scale(" + scale + ")";
+
+  }
 
   useEffect(() => {
-    const viewerContainerActions = document.getElementsByClassName("viewer__container--actions")[0];
-
     document.addEventListener('touchmove', event => {
       if (!allowZoom) {
         event.preventDefault();
@@ -30,41 +39,24 @@ function App() {
         return
       }
       else {
-        let scale = (1 / window.visualViewport.scale);
-        let scaleOffset = scale*100;
-        let offsetLeft = window.visualViewport.offsetLeft;
-        let offsetTop = window.visualViewport.offsetTop;
-        viewerContainerActions.style.left = offsetLeft-100+scaleOffset + "px";
-        viewerContainerActions.style.top =  offsetTop-(7.5*window.visualViewport.scale) + "px";
-        viewerContainerActions.style.transform = "scale(" + scale + ")";
+        setActionsOffset();
         }
     }, { passive: false });
     document.addEventListener('wheel', event => {
-      let scale = (1 / window.visualViewport.scale);
-      let scaleOffset = scale*100;
-      let offsetLeft = window.visualViewport.offsetLeft;
-      let offsetTop = window.visualViewport.offsetTop;
-      viewerContainerActions.style.left = offsetLeft-100+scaleOffset + "px";
-      viewerContainerActions.style.top =  offsetTop-(7.5*window.visualViewport.scale) + "px";
-      viewerContainerActions.style.transform = "scale(" + scale + ")";
+      setActionsOffset();
     });
   });
   
   return (
     <div className="App">
-
       <div id="viewer__container--actions" className="viewer__container viewer__container--actions">
-
-
         <Stack direction="row" spacing={1} alignItems="center" className="viewer__actions-menu">
-
 
           <Grid xs={6}
             display="flex"
             justifyContent="right"
             alignItems="center"
           >
-
             <Button
               component="label"
               tabIndex={-1}
@@ -77,7 +69,6 @@ function App() {
             >
               <input type="file" onChange={handleUpload} className="hidden-input" />
             </Button>
-
           </Grid>
 
           <Divider orientation="vertical" flexItem />
@@ -99,12 +90,12 @@ function App() {
         </Stack>
 
       </div>
+
       <div className="viewer__container viewer__container--image">
         <img src={file} class="viewer-image" alt="" />
       </div >
+
     </div >
-
-
   );
 }
 
